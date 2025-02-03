@@ -1,12 +1,8 @@
 {
-  "version": "1.0.0",
   "name": "molxno/laravel-cloudwatch",
+  "description": "A Laravel package for integrating with AWS CloudWatch.",
   "type": "library",
-  "autoload": {
-    "psr-4": {
-      "Molxno\\LaravelCloudwatch\\": "src/"
-    }
-  },
+  "license": "MIT",
   "authors": [
     {
       "name": "molxno",
@@ -14,8 +10,24 @@
     }
   ],
   "require": {
+    "php": ">=7.4",
     "aws/aws-sdk-php": "^3.339",
     "monolog/monolog": "^3.8"
+  },
+  "require-dev": {
+    "illuminate/support": "^11.41",
+    "illuminate/log": "^11.41",
+    "phpunit/phpunit": "^10.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Molxno\\LaravelCloudwatch\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Molxno\\LaravelCloudwatch\\Tests\\": "tests/"
+    }
   },
   "extra": {
     "laravel": {
@@ -24,8 +36,6 @@
       ]
     }
   },
-  "require-dev": {
-    "illuminate/support": "^11.41",
-    "illuminate/log": "^11.41"
-  }
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
