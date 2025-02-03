@@ -1,1 +1,1 @@
-# laravel-cloudwatch
+# laravel-cloudwatch-logging
