@@ -1,0 +1,30 @@
+{
+  "name": "molxno/laravel-cloudwatch",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Molxno\\LaravelCloudwatch\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "molxno",
+      "email": "s.molano0818@gmail.com"
+    }
+  ],
+  "require": {
+    "aws/aws-sdk-php": "^3.339",
+    "monolog/monolog": "^3.8"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Molxno\\LaravelCloudwatch\\CloudWatchServiceProvider"
+      ]
+    }
+  },
+  "require-dev": {
+    "illuminate/support": "^11.41",
+    "illuminate/log": "^11.41"
+  }
+}
