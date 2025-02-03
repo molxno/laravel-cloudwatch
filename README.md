@@ -7,7 +7,7 @@ Este paquete permite enviar logs de Laravel a AWS CloudWatch de manera sencilla 
 Puedes instalar el paquete mediante Composer:
 
 ```sh
-composer require tu-namespace/laravel-cloudwatch-logging
+composer require molxno/laravel-cloudwatch-logging
 ```
 
 ## ⚙️ Configuración
