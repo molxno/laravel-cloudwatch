@@ -12,7 +12,8 @@
   "require": {
     "php": ">=7.4",
     "aws/aws-sdk-php": "^3.339",
-    "monolog/monolog": "^3.8"
+    "monolog/monolog": "^3.8",
+    "illuminate/container": "^11.41"
   },
   "require-dev": {
     "illuminate/support": "^11.41",
@@ -26,7 +27,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Molxno\\LaravelCloudwatch\\Tests\\": "tests/"
+      "Tests\\Unit\\": "tests/Unit/"
     }
   },
   "extra": {

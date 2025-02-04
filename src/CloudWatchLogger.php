@@ -4,8 +4,9 @@ namespace Molxno\LaravelCloudwatch;
 
 use Aws\CloudWatchLogs\CloudWatchLogsClient;
 use Monolog\Handler\AbstractProcessingHandler;
-use Monolog\Logger;
+use Monolog\Level;
 use Aws\Exception\AwsException;
+use Monolog\LogRecord;
 
 class CloudWatchLogger extends AbstractProcessingHandler
 {
@@ -14,36 +15,36 @@ class CloudWatchLogger extends AbstractProcessingHandler
     protected string $logStream;
     protected ?string $sequenceToken = null;
 
-    public function __construct(array $config, $level = Logger::DEBUG, bool $bubble = true)
+    public function __construct(array $config, $level = Level::Debug, bool $bubble = true)
     {
         parent::__construct($level, $bubble);
 
         try {
             $this->client = new CloudWatchLogsClient([
-                'version'     => 'latest',
-                'region'      => $config['region'],
+                'version' => 'latest',
+                'region' => $config['region'],
                 'credentials' => [
-                    'key'    => $config['key'],
+                    'key' => $config['key'],
                     'secret' => $config['secret'],
                 ],
             ]);
 
-            $this->logGroup  = $config['log_group'];
+            $this->logGroup = $config['log_group'];
             $this->logStream = $config['log_stream'];
         } catch (AwsException $e) {
             throw new \RuntimeException("Error al conectar con CloudWatch: " . $e->getMessage());
         }
     }
 
-    protected function write(\Monolog\LogRecord $record): void
+    public function write(LogRecord $record): void
     {
         $params = [
-            'logGroupName'  => $this->logGroup,
+            'logGroupName' => $this->logGroup,
             'logStreamName' => $this->logStream,
-            'logEvents'     => [
+            'logEvents' => [
                 [
                     'timestamp' => round(microtime(true) * 1000),
-                    'message'   => $record->formatted,
+                    'message' => $record->formatted,
                 ],
             ],
         ];
